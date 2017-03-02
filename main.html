@@ -29,20 +29,33 @@
     <script>
         var map;
 
+
         function initMap() {
             var myLatLng = {
-                lat: 52.363,
-                lng: 0.001
+                lat: 55.7,
+                lng: 12.541
             };
             var myLatLng1 = {
                 lat: 52.363,
                 lng: 10.001
 
             };
+            var myLatLng2 = {
+                lat: 52.363,
+                lng: 15.001
+
+            };
+
+            var myLatLng3 = {
+                lat: 52.363,
+                lng: 20.001
+
+            };
 
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 4,
-                center: myLatLng
+                center: myLatLng,
+
             });
 
             var marker = new google.maps.Marker({
@@ -50,11 +63,47 @@
                 map: map,
                 title: 'Sker der'
             });
-            var marker = new google.maps.Marker({
+
+            var image = 'laekkert1.jpg'
+            var marker1 = new google.maps.Marker({
                 position: myLatLng1,
+                map: map,
+                title: 'Sker der1',
+                icon: image,
+                animation: google.maps.Animation.BOUNCE,
+
+
+            });
+            var marker = new google.maps.Marker({
+                position: myLatLng2,
                 map: map,
                 title: 'Sker der2'
             });
+
+
+
+            var marker = new google.maps.Marker({
+                position: myLatLng3,
+                map: map,
+                title: 'Sker der3'
+            });
+
+            marker1.addListener('click', function() {
+                map.setZoom(15);
+                map.setCenter(marker.getPosition());
+
+            });
+
+            // infowindow
+            var infowindow = new google.maps.InfoWindow({
+                content: "<h1> kom og smag </h1><br><p>ahahahahah</p>",
+
+            });
+            marker1.addListener('click', function() {
+                infowindow.open(map, marker1);
+            })
+
+
         }
 
     </script>
