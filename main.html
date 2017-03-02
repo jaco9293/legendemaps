@@ -1,13 +1,64 @@
-<<!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html>
 
-    <head>
-        <meta charset="UTF-8">
-        <title>google maps</title>
-    </head>
+<head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
 
-    <body>
+        #map {
+            height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
 
-    </body>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
 
-    </html>
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        var map;
+
+        function initMap() {
+            var myLatLng = {
+                lat: 52.363,
+                lng: 0.001
+            };
+            var myLatLng1 = {
+                lat: 52.363,
+                lng: 10.001
+
+            };
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: myLatLng
+            });
+
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'Sker der'
+            });
+            var marker = new google.maps.Marker({
+                position: myLatLng1,
+                map: map,
+                title: 'Sker der2'
+            });
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAf1YGgwj8hpqIDFtobT3sUwHTUmAmIbnA&callback=initMap" async defer></script>
+</body>
+
+</html>
