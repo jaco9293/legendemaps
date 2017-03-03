@@ -1,0 +1,25 @@
+[{
+    "navn": "Hovedindgang",
+    "beskrivelse": "Her går man ind i bygningen",
+    "billede": "hovedindgang",
+    "id": "hovedindgang"
+
+}, {
+    "navn": "Fredagsbar",
+    "beskrivelse": "Moonbar, dakke dak ja tak",
+    "billede": "fredagsbar",
+    "id": "fredagsbar"
+
+}, {
+    "navn": "Kantinen",
+    "beskrivelse": "Et lækkert sted, hvor man kan købe mad og drikke",
+    "billede": "kantine",
+    "id": "kantine"
+
+}, {
+    "navn": "Et meget mystisk område",
+    "beskrivelse": "Ved ikke helt",
+    "billede": "mystisksted",
+    "id": "?"
+
+}]

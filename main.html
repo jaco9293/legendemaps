@@ -25,12 +25,42 @@
 </head>
 
 <body>
-    <div id="content3">
-        <h3>hejsa</h3>
-    </div>
+    <template id="my_template">
+
+        <h3 class="data_overskrift">HEJSA</h3>
+        <img class="data_billede" href="laekkert.jpg">
+        <p class="data_beskrivelse">BESKRIVELSE</p>
+        </div>
+    </template>
+
+
     <div id="map"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
         var map;
+
+        //Get JSON
+        $.getJson("punkter.json", visListe);
+
+        //Opdel liste
+        function visListe(infoOmSteder) {
+            console.log(infoOmSteder);
+            infoOmSteder.forEach(visSteder);
+        }
+        //Lav klon
+        function visSteder(sted) {
+            var klon = document.querySelector("#my_template").content.cloneNode(true);
+
+            klon.querySelector(".data_overskrift").innerHTML = sted.navn;
+            klon.querySelector(".data_beskrivelse").innerHTML = sted.beskrivelse;
+            klon.querySelector(".data_billede").innerHTML = sted.bekskrivelse;
+
+        }
+
+
+
+
+
 
 
         function initMap() {
@@ -104,7 +134,10 @@
                 infowindow.open(map, marker1);
                 var content = document.querySelector('#content3');
                 infowindow.setContent(content);
+
             });
+
+
         }
 
     </script>
