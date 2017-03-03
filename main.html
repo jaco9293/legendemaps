@@ -25,6 +25,9 @@
 </head>
 
 <body>
+    <div id="content3">
+        <h3>hejsa</h3>
+    </div>
     <div id="map"></div>
     <script>
         var map;
@@ -77,9 +80,8 @@
             var marker = new google.maps.Marker({
                 position: myLatLng2,
                 map: map,
-                title: 'Sker der2'
+                title: 'Sker der2',
             });
-
 
 
             var marker = new google.maps.Marker({
@@ -96,14 +98,13 @@
 
             // infowindow
             var infowindow = new google.maps.InfoWindow({
-                content: "<h1> kom og smag </h1><br><p>ahahahahah</p>",
-
+                content: "<h1> kom og smag </h1> < br > < p > ahahahahah < /p>",
             });
             marker1.addListener('click', function() {
                 infowindow.open(map, marker1);
-            })
-
-
+                var content = document.querySelector('#content3');
+                infowindow.setContent(content);
+            });
         }
 
     </script>
