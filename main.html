@@ -26,11 +26,10 @@
 
 <body>
     <template id="my_template">
-
         <h3 class="data_overskrift">HEJSA</h3>
         <img class="data_billede" href="laekkert.jpg">
         <p class="data_beskrivelse">BESKRIVELSE</p>
-        </div>
+
     </template>
 
 
@@ -39,105 +38,100 @@
     <script>
         var map;
 
-        //Get JSON
-        $.getJson("punkter.json", visListe);
 
-        //Opdel liste
-        function visListe(infoOmSteder) {
-            console.log(infoOmSteder);
-            infoOmSteder.forEach(visSteder);
-        }
-        //Lav klon
-        function visSteder(sted) {
-            var klon = document.querySelector("#my_template").content.cloneNode(true);
-
-            klon.querySelector(".data_overskrift").innerHTML = sted.navn;
-            klon.querySelector(".data_beskrivelse").innerHTML = sted.beskrivelse;
-            klon.querySelector(".data_billede").innerHTML = sted.bekskrivelse;
-
-        }
-
-
-
-
-
-
+        //Lav marker ud fra JSON
 
         function initMap() {
-            var myLatLng = {
-                lat: 55.7,
-                lng: 12.541
+            var hovedindgang = {
+                lat: 55.706369,
+                lng: 12.539088
             };
-            var myLatLng1 = {
-                lat: 52.363,
-                lng: 10.001
-
-            };
-            var myLatLng2 = {
-                lat: 52.363,
-                lng: 15.001
-
-            };
-
-            var myLatLng3 = {
-                lat: 52.363,
-                lng: 20.001
-
-            };
-
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4,
-                center: myLatLng,
+                zoom: 20,
+                center: hovedindgang,
 
             });
+            /*
+                        var kantine = {
+                            lat: 55.706479,
+                            lng: 12.539270
 
-            var marker = new google.maps.Marker({
-                position: myLatLng,
-                map: map,
-                title: 'Sker der'
-            });
+                        };
+                        var moonbar = {
+                            lat: 55.706206,
+                            lng: 12.539531
 
-            var image = 'laekkert1.jpg'
-            var marker1 = new google.maps.Marker({
-                position: myLatLng1,
-                map: map,
-                title: 'Sker der1',
-                icon: image,
-                animation: google.maps.Animation.BOUNCE,
+                        };
 
+                        var mystisksted = {
+                            lat: 55.706257,
+                            lng: 12.540199
 
-            });
-            var marker = new google.maps.Marker({
-                position: myLatLng2,
-                map: map,
-                title: 'Sker der2',
-            });
+                        };
 
+                        var marker1 = new google.maps.Marker({
+                            position: kantine,
+                            map: map,
+                            title: 'Sker der1',
 
-            var marker = new google.maps.Marker({
-                position: myLatLng3,
-                map: map,
-                title: 'Sker der3'
-            });
-
-            marker1.addListener('click', function() {
-                map.setZoom(15);
-                map.setCenter(marker.getPosition());
-
-            });
-
-            // infowindow
-            var infowindow = new google.maps.InfoWindow({
-                content: "<h1> kom og smag </h1> < br > < p > ahahahahah < /p>",
-            });
-            marker1.addListener('click', function() {
-                infowindow.open(map, marker1);
-                var content = document.querySelector('#content3');
-                infowindow.setContent(content);
-
-            });
+                        });
+                        var marker = new google.maps.Marker({
+                            position: moonbar,
+                            map: map,
+                            title: 'Sker der2',
+                        });
 
 
+                        var marker = new google.maps.Marker({
+                            position: mystisksted,
+                            map: map,
+                            title: 'Sker der3'
+                        });
+
+                        marker1.addListener('click', function() {
+
+                            map.setCenter(marker.getPosition());
+
+                        });
+
+                        // infowindow
+                        var infowindow = new google.maps.InfoWindow({
+                            content: "<h1> kom og smag </h1> < br > < p > ahahahahah < /p>",
+                        });
+                        marker1.addListener('click', function() {
+                            infowindow.open(map, marker1);
+                            var content = document.querySelector('#content3');
+                            infowindow.setContent(klon);
+
+                        }); */
+
+            //Get JSON
+
+            $.getJSON("punkter.json", visListe);
+
+
+            //Opdel liste
+            function visListe(infoOmSteder) {
+                console.table(infoOmSteder);
+                infoOmSteder.forEach(visSteder);
+            }
+            //Lav klon
+            function visSteder(sted) {
+
+                var marker = new google.maps.Marker({
+                    position: sted.position,
+                    map: map,
+                    title: 'Sker der'
+                });
+
+                var klon = document.querySelector("#my_template").content.cloneNode(true);
+
+                klon.querySelector(".data_overskrift").innerHTML = sted.navn;
+                klon.querySelector(".data_beskrivelse").innerHTML = sted.beskrivelse;
+                klon.querySelector(".data_billede").src = "img/" + sted.billede + ".jpg";
+                console.log(sted.position);
+
+            }
         }
 
     </script>
